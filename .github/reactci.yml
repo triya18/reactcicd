@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
+        node-versions: [ 18,19,20]
 
     steps:
       - name: Checkout repository
@@ -20,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{matrix.node-versions}}
 
       - name: npm ci
         run: npm ci
